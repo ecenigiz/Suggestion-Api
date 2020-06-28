@@ -28,7 +28,6 @@ namespace Kaizen_0._1.Controllers
         }
 
 
-
         [HttpGet]
         [Route("get-suggestion-by-id/{id}")]
         public ActionResult<Suggestion> GetSuggetionById(int id)
@@ -40,9 +39,6 @@ namespace Kaizen_0._1.Controllers
             return Ok(sg);
         }
         
-
-
-
         [HttpPost]
         [Route("post-suggestion/{suggestion}")] //??
         public async Task<ActionResult> Post([FromBody]Suggestion suggestion)
@@ -66,12 +62,13 @@ namespace Kaizen_0._1.Controllers
         {
             if (suggestion == null)
             {
-                return NotFound("Stduent data is not supplied");
+                return NotFound("Bos");
             }
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
+      
             Suggestion existinSuggestion = _kaizenContext.Suggestions.FirstOrDefault(s => s.Id == suggestion.Id);
             if (existinSuggestion == null)
             {
